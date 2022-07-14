@@ -30,7 +30,7 @@ class Dashboard extends Component{
                                 <Button size="large">Customer</Button>
                             </Link>
 
-                            <Link className={classes.link} to={"/"}>
+                            <Link className={classes.link} to={"/item"}>
                                 <Button size="large">Item</Button>
                             </Link>
                         </div>
