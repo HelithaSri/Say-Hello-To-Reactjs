@@ -4,6 +4,7 @@ import {Route, Routes} from "react-router-dom";
 import NotFound from "../pages/Session/NotFound";
 import Dashboard from "../pages/Dashboard";
 import Customer from "../pages/Customer";
+import Item from "../pages/Item";
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
             <Route exact path='login' element={<Login/>}/>
             <Route exact path='dashboard' element={<Dashboard/>}/>
             <Route exact path='customer' element={<Customer/>}/>
+            <Route exact path='item' element={<Item/>}/>
             <Route exact path='*' element={<NotFound/>}/>
         </Routes>);
 }
