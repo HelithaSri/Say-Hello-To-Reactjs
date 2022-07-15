@@ -29,6 +29,10 @@ class Home extends Component {
                 <Button variant="contained" size="large">Item</Button>
             </Link>
 
+            <Link className={classes.link} to={"/post"}>
+                <Button variant="contained" size="large">Post</Button>
+            </Link>
+
             <Link className={classes.link} to={"/*"}>
                 <Button variant="contained" size="large">Not Found</Button>
             </Link>

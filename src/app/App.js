@@ -5,6 +5,7 @@ import NotFound from "../pages/Session/NotFound";
 import Dashboard from "../pages/Dashboard";
 import Customer from "../pages/Customer";
 import Item from "../pages/Item";
+import Post from "../pages/post";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
             <Route exact path='dashboard' element={<Dashboard/>}/>
             <Route exact path='customer' element={<Customer/>}/>
             <Route exact path='item' element={<Item/>}/>
+            <Route exact path='post' element={<Post/>}/>
             <Route exact path='*' element={<NotFound/>}/>
         </Routes>);
 }
