@@ -42,7 +42,7 @@ class Trail extends Component{
 
     handleSubmit = () => {
         // your submit logic
-        console.log(this.state.post);
+        console.log(this.state);
     }
 
     render() {
@@ -60,7 +60,7 @@ class Trail extends Component{
                             onChange={this.handleChange}
                             name="userId"
                             value={this.state.userId}
-                            validators={['required', 'isEmail']}
+                            validators={['required', 'isPositive']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
 
@@ -69,7 +69,7 @@ class Trail extends Component{
                             onChange={this.handleChange}
                             name="title"
                             value={this.state.title}
-                            validators={['required', 'isEmail']}
+                            validators={['required']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
 
@@ -78,7 +78,7 @@ class Trail extends Component{
                             onChange={this.handleChange}
                             name="id"
                             value={this.state.id}
-                            validators={['required', 'isEmail']}
+                            validators={['required', 'isPositive']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
 
@@ -87,7 +87,7 @@ class Trail extends Component{
                             onChange={this.handleChange}
                             name="body"
                             value={this.state.body}
-                            validators={['required', 'isEmail']}
+                            validators={['required']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
 
