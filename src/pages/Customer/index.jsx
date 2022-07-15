@@ -20,10 +20,10 @@ class Customer extends Component {
         this.state = {
             gender: [{label: 'Male'}, {label: 'Female'}],
             customer:{
-                name:'a',
-                nic:'s',
-                gen:'d',
-                email:'f'
+                name:'',
+                nic:'',
+                gen:'',
+                email:''
             },
             customerTblData:[
 
@@ -44,12 +44,6 @@ class Customer extends Component {
         let {customerTblData} = this.state;
         customerTblData.push(obj);
         this.setState({customerTblData: customerTblData});
-
-        // tblData.push(obj);
-
-        // this.setState({tblData})
-        // console.log(customer.name +", "+customer.gen)
-        // console.log(this.state.customerTblData)
 
     }
 
@@ -130,12 +124,12 @@ class Customer extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
+                                {/*<TableRow>
                                     <TableCell>Helitha Sri</TableCell>
                                     <TableCell>20001256879</TableCell>
                                     <TableCell>Male</TableCell>
                                     <TableCell>heli@gmail.com</TableCell>
-                                </TableRow>
+                                </TableRow>*/}
 
                                 {this.state.customerTblData.map((row) => (
                                     <TableRow
