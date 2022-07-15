@@ -72,8 +72,8 @@ class Item extends Component {
                 </div>
 
                 <div>
-                    <TableContainer component={Paper}>
-                        <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableContainer component={Paper} sx={{maxHeight:'580px'}}>
+                        <Table sx={{minWidth: 650}} aria-label="simple table" stickyHeader>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Code</TableCell>

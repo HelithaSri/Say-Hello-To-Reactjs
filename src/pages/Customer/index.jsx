@@ -18,8 +18,43 @@ class Customer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gender: [{label: 'Male'}, {label: 'Female'}]
+            gender: [{label: 'Male'}, {label: 'Female'}],
+            customer:{
+                name:'',
+                nic:'',
+                gen:'',
+                email:''
+            },
+            customerTblData:[
+                /*{
+                    name:'Sri',
+                    nic:'65015',
+                    gen:'Male',
+                    email:'sri'
+                }*/
+            ]
         }
+    }
+
+    saveCustomer(){
+
+        let customer = this.state.customer;
+        let {tblData} = this.state;
+
+       /* tblData.push({
+            name:customer.name,
+            nic:customer.nic,
+            gen:customer.gen,
+            email:customer.email
+        })
+*/
+        tblData.append(tblData.length);
+
+
+        this.setState({tblData})
+        console.log(customer.name +", "+customer.gen)
+        console.log(this.state.customerTblData)
+
     }
 
     render() {
@@ -52,27 +87,44 @@ class Customer extends Component {
 
                 <div className={classes.form_div}>
                     <div className={classes.txt_div}>
-                        <TextField id="outlined-basic" label="Customer Name" variant="outlined"/>
-                        <TextField id="outlined-basic" label="NIC" variant="outlined"/>
+                        <TextField id="outlined-basic" label="Customer Name" variant="outlined" onChange={(e) => {
+                            let cus = this.state.customer;
+                            cus.name=e.target.value
+                        }}/>
+                        <TextField id="outlined-basic" label="NIC" variant="outlined" onChange={(e) => {
+                            let cus = this.state.customer;
+                            cus.nic=e.target.value
+                        }} />
                     </div>
                     <div className={classes.txt_div}>
                         <Autocomplete
+                            onChange={(event, newValue) => {
+                                let cus = this.state.customer;
+                                cus.gen=newValue.label
+                                // console.log(newValue.label);
+                            }}
                             disablePortal
                             id="combo-box-demo"
                             options={this.state.gender}
-                            renderInput={(params) => <TextField {...params} label="Gender"/>}
+                            renderInput={(params) => <TextField {...params} label="Gender" onChange={(e) => {
+                                let cus = this.state.customer;
+                                // cus.gen=e.target.value
+                            }}/>}
                         />
-                        <TextField id="outlined-basic" label="Email" variant="outlined"/>
+                        <TextField id="outlined-basic" label="Email" variant="outlined" onChange={(e) => {
+                            let cus = this.state.customer;
+                            cus.email=e.target.value
+                        }}/>
                     </div>
                 </div>
                 <div className={classes.btn_div}>
                     <Button size="large" color={"error"} variant="outlined">Clear</Button>
-                    <Button size="large" variant="outlined">Save</Button>
+                    <Button size="large" variant="outlined" onClick={() =>{this.saveCustomer()}}>Save</Button>
                 </div>
 
                 <div>
-                    <TableContainer component={Paper}>
-                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <TableContainer component={Paper} sx={{maxHeight:'580px'}}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table" stickyHeader>
                             <TableHead>
                                 <TableRow>
                                     <TableCell>Customer Name</TableCell>
@@ -89,20 +141,17 @@ class Customer extends Component {
                                     <TableCell>heli@gmail.com</TableCell>
                                 </TableRow>
 
-                                {/*{rows.map((row) => (
+                                {this.state.customerTblData.map((row) => (
                                     <TableRow
                                         key={row.name}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <TableCell component="th" scope="row">
-                                            {row.name}
-                                        </TableCell>
-                                        <TableCell align="right">{row.calories}</TableCell>
-                                        <TableCell align="right">{row.fat}</TableCell>
-                                        <TableCell align="right">{row.carbs}</TableCell>
-                                        <TableCell align="right">{row.protein}</TableCell>
+                                        <TableCell>{row.name}</TableCell>
+                                        <TableCell>{row.nic}</TableCell>
+                                        <TableCell>{row.gen}</TableCell>
+                                        <TableCell>{row.email}</TableCell>
                                     </TableRow>
-                                ))}*/}
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
