@@ -20,18 +20,13 @@ class Customer extends Component {
         this.state = {
             gender: [{label: 'Male'}, {label: 'Female'}],
             customer:{
-                name:'',
-                nic:'',
-                gen:'',
-                email:''
+                name:'a',
+                nic:'s',
+                gen:'d',
+                email:'f'
             },
             customerTblData:[
-                /*{
-                    name:'Sri',
-                    nic:'65015',
-                    gen:'Male',
-                    email:'sri'
-                }*/
+
             ]
         }
     }
@@ -39,21 +34,22 @@ class Customer extends Component {
     saveCustomer(){
 
         let customer = this.state.customer;
-        let {tblData} = this.state;
-
-       /* tblData.push({
+        let obj = {
             name:customer.name,
             nic:customer.nic,
             gen:customer.gen,
             email:customer.email
-        })
-*/
-        tblData.append(tblData.length);
+        }
 
+        let {customerTblData} = this.state;
+        customerTblData.push(obj);
+        this.setState({customerTblData: customerTblData});
 
-        this.setState({tblData})
-        console.log(customer.name +", "+customer.gen)
-        console.log(this.state.customerTblData)
+        // tblData.push(obj);
+
+        // this.setState({tblData})
+        // console.log(customer.name +", "+customer.gen)
+        // console.log(this.state.customerTblData)
 
     }
 
