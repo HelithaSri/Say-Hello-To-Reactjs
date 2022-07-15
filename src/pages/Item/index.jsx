@@ -24,8 +24,31 @@ class Item extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            gender: [{label: 'Male'}, {label: 'Female'}]
+            gender: [{label: 'Male'}, {label: 'Female'}],
+            item:{
+                code:'',
+                description:'',
+                price:null,
+                qty:null
+            },
+            itemTblData:[
+
+            ]
         }
+    }
+
+    saveItem(){
+        const item = this.state.item;
+        let obj = {
+            code:item.code,
+            description:item.description,
+            price:item.price,
+            qty:item.qty
+        }
+
+        let {itemTblData} = this.state;
+        itemTblData.push(obj);
+        this.setState({itemTblData:itemTblData})
     }
 
     render() {
@@ -58,17 +81,31 @@ class Item extends Component {
 
                 <div className={classes.form_div}>
                     <div className={classes.txt_div}>
-                        <TextField id="outlined-basic" label="Code" variant="outlined"/>
-                        <TextField id="outlined-basic" label="Description" variant="outlined"/>
+                        <TextField id="outlined-basic" label="Code" variant="outlined" onChange={(e) =>{
+                            let item = this.state.item;
+                            item.code=e.target.value
+                        }}/>
+                        <TextField id="outlined-basic" label="Description" variant="outlined" onChange={(e) =>{
+                            let item = this.state.item;
+                            item.description=e.target.value
+                        }}/>
                     </div>
                     <div className={classes.txt_div}>
-                        <TextField id="outlined-basic" label="Price" type='number' variant="outlined"/>
-                        <TextField id="outlined-basic" label="Qty" type='number' variant="outlined"/>
+                        <TextField id="outlined-basic" label="Price" type='number' variant="outlined" onChange={(e) =>{
+                            let item = this.state.item;
+                            item.price=e.target.value
+                        }}/>
+                        <TextField id="outlined-basic" label="Qty" type='number' variant="outlined" onChange={(e) =>{
+                            let item = this.state.item;
+                            item.qty=e.target.value
+                        }}/>
                     </div>
                 </div>
                 <div className={classes.btn_div}>
                     <Button size="large" color={"error"} variant="outlined">Clear</Button>
-                    <Button size="large" variant="outlined">Save</Button>
+                    <Button size="large" variant="outlined" onClick={() =>{
+                        this.saveItem()
+                    }}>Save</Button>
                 </div>
 
                 <div>
@@ -83,27 +120,26 @@ class Item extends Component {
                                 </TableRow>
                             </TableHead>
                             <TableBody>
-                                <TableRow>
+                                {/*<TableRow>
                                     <TableCell>I001</TableCell>
                                     <TableCell>Mouse</TableCell>
                                     <TableCell>1500</TableCell>
                                     <TableCell>2</TableCell>
-                                </TableRow>
+                                </TableRow>*/}
 
-                                {/*{rows.map((row) => (
+                                {this.state.itemTblData.map((row) => (
                                     <TableRow
-                                        key={row.name}
+                                        key={row.code}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
-                                        <TableCell component="th" scope="row">
-                                            {row.name}
+                                        <TableCell>
+                                            {row.code}
                                         </TableCell>
-                                        <TableCell align="right">{row.calories}</TableCell>
-                                        <TableCell align="right">{row.fat}</TableCell>
-                                        <TableCell align="right">{row.carbs}</TableCell>
-                                        <TableCell align="right">{row.protein}</TableCell>
+                                        <TableCell>{row.description}</TableCell>
+                                        <TableCell>{row.price}</TableCell>
+                                        <TableCell>{row.qty}</TableCell>
                                     </TableRow>
-                                ))}*/}
+                                ))}
                             </TableBody>
                         </Table>
                     </TableContainer>
