@@ -6,6 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import Customer from "../pages/Customer";
 import Item from "../pages/Item";
 import Post from "../pages/post";
+import Trail from "../Trail";
 
 function App() {
     return (
@@ -18,6 +19,8 @@ function App() {
             <Route exact path='item' element={<Item/>}/>
             <Route exact path='post' element={<Post/>}/>
             <Route exact path='*' element={<NotFound/>}/>
+            <Route exact path='trail' element={<Trail/>}/>
+
         </Routes>);
 }
 

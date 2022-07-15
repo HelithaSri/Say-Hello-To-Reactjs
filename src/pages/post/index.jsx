@@ -35,7 +35,7 @@ class Post extends Component {
 
     saveCustomer(){
 
-        let post = this.state.post;
+        /*let post = this.state.post;
         let obj = {
             userId:post.userId,
             title:post.title,
@@ -45,7 +45,9 @@ class Post extends Component {
 
         let {customerTblData} = this.state;
         customerTblData.push(obj);
-        this.setState({customerTblData: customerTblData});
+        this.setState({customerTblData: customerTblData});*/
+
+        console.log("Click");
 
     }
 
@@ -78,10 +80,11 @@ class Post extends Component {
             <div className={classes.content_div}>
                 <ValidatorForm
                     ref="form"
-                    // onSubmit={this.saveCustomer()}
-                    onSubmit={() => {
+                    onSubmit={this.saveCustomer()}
+                    /*onSubmit={() => {
                         this.saveCustomer()
-                    }}
+                        console.log("Click");
+                    }}*/
                     onError={errors => console.log(errors)}
                 >
                     <div className={classes.form_div}>
@@ -110,9 +113,6 @@ class Post extends Component {
                         </div>
                     </div>
                 </ValidatorForm>
-
-
-
 
                 <div>
                     <TableContainer component={Paper} sx={{maxHeight:'580px'}}>
