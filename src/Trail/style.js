@@ -3,7 +3,8 @@ export const styleSheet ={
         display:'flex',
         height:'100vh',
         width:'100vw',
-        backgroundColor:'#f1eaea',
+        backgroundColor:'#f6f4f4',
+        flexDirection:'column',
         gap: '50px'
         // backgroundColor:'red'
     },

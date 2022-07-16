@@ -3,46 +3,50 @@ import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 import Button from "@mui/material/Button";
 import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
+import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 
 class Trail extends Component{
     constructor(props) {
         super(props);
-        this.state={
-            userId:'',
-            title:'',
-            id:'',
-            body:''
-        }
+        this.state = {
+          formData: {
+            userId: '',
+            title: '',
+            id: '',
+            body: '',
+          },
+        };
     }
     handleChange = (event) => {
         let id = event.target.name;
         switch (id) {
             case "userId":
                 const userId = event.target.value;
-                this.setState({ userId });
+                this.setState(Object.assign(this.state.formData,{ userId:userId }));
+                // this.setState({ userId });
                 break;
 
             case "title":
                 const title = event.target.value;
-                this.setState({ title });
+                this.setState(Object.assign(this.state.formData,{ title:title }));
                 break;
 
             case "id":
                 const id = event.target.value;
-                this.setState({ id });
+                this.setState(Object.assign(this.state.formData,{ id:id }));
                 break;
 
             case "body":
                 const body = event.target.value;
-                this.setState({ body });
+                this.setState(Object.assign(this.state.formData,{ body:body }));
                 break;
         }
     }
 
     handleSubmit = () => {
         // your submit logic
-        console.log(this.state);
+        console.log(this.state.formData);
     }
 
     render() {
@@ -59,7 +63,7 @@ class Trail extends Component{
                             label="UserID"
                             onChange={this.handleChange}
                             name="userId"
-                            value={this.state.userId}
+                            value={this.state.formData.userId}
                             validators={['required', 'isPositive']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
@@ -68,7 +72,7 @@ class Trail extends Component{
                             label="Title"
                             onChange={this.handleChange}
                             name="title"
-                            value={this.state.title}
+                            value={this.state.formData.title}
                             validators={['required']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
@@ -77,7 +81,7 @@ class Trail extends Component{
                             label="ID"
                             onChange={this.handleChange}
                             name="id"
-                            value={this.state.id}
+                            value={this.state.formData.id}
                             validators={['required', 'isPositive']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
@@ -86,7 +90,7 @@ class Trail extends Component{
                             label="Body"
                             onChange={this.handleChange}
                             name="body"
-                            value={this.state.body}
+                            value={this.state.formData.body}
                             validators={['required']}
                             errorMessages={['this field is required', 'email is not valid']}
                         />
@@ -96,9 +100,38 @@ class Trail extends Component{
                         <div className={classes.btn_div}>
                             <Button size="large" type="submit">Submit</Button>
                         </div>
-
-
                     </ValidatorForm>
+
+                <div className={classes.table_container}>
+                    <TableContainer component={Paper}>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>User ID</TableCell>
+                                    <TableCell>Title</TableCell>
+                                    <TableCell>ID</TableCell>
+                                    <TableCell>Body</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {/*{this.state.map((row) => (
+                                    <TableRow
+                                        key={row.name}
+                                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                    >
+                                        <TableCell component="th" scope="row">
+                                            {row.name}
+                                        </TableCell>
+                                        <TableCell align="right">{row.calories}</TableCell>
+                                        <TableCell align="right">{row.fat}</TableCell>
+                                        <TableCell align="right">{row.carbs}</TableCell>
+                                        <TableCell align="right">{row.protein}</TableCell>
+                                    </TableRow>
+                                ))}*/}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </div>
 
             </div>
         )
