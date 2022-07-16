@@ -24,6 +24,19 @@ export const styleSheet ={
         justifyContent:'center',
         marginTop:'30px',
         marginBottom:'30px'
+    },
+
+    table_container:{
+        height:'100vh',
+        display:'flex',
+        justifyContent:'center'
+
+    },
+
+    cTbl:{
+        // backgroundColor:'red',
+        height:'68vh',
+        width:'90vw'
     }
 
 }
