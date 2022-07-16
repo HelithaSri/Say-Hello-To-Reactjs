@@ -8,7 +8,8 @@ export const styleSheet ={
         justifyContent:'center',
         alignItems:'center',
         flexDirection:'column',
-        alignContent:'space-around'
+        alignContent:'space-around',
+        backgroundColor:'#181818',
     }
 
 }
