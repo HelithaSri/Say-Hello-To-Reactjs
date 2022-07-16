@@ -4,6 +4,8 @@ import Button from "@mui/material/Button";
 import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import CustomSnackBars from "../components/common/SnakBar"
+import PostService from "../services/PostService";
 
 
 class Trail extends Component{
@@ -11,42 +13,66 @@ class Trail extends Component{
         super(props);
         this.state = {
           formData: {
-            userId: '',
-            title: '',
-            id: '',
-            body: '',
+            userId: "",
+            title: "",
+            id: "",
+            body: "",
           },
+          alert: false,
+          message: '',
+          severity: ''
         };
     }
     handleChange = (event) => {
         let id = event.target.name;
         switch (id) {
-            case "userId":
-                const userId = event.target.value;
-                this.setState(Object.assign(this.state.formData,{ userId:userId }));
-                // this.setState({ userId });
-                break;
+          case "userId":
+            const userId = event.target.value;
+            this.setState(
+              Object.assign(this.state.formData, { userId: userId })
+            );
+            // this.setState({ userId });
+            break;
 
-            case "title":
-                const title = event.target.value;
-                this.setState(Object.assign(this.state.formData,{ title:title }));
-                break;
+          case "title":
+            const title = event.target.value;
+            this.setState(Object.assign(this.state.formData, { title: title }));
+            break;
 
-            case "id":
-                const id = event.target.value;
-                this.setState(Object.assign(this.state.formData,{ id:id }));
-                break;
+          case "id":
+            const id = event.target.value;
+            this.setState(Object.assign(this.state.formData, { id: id }));
+            break;
 
-            case "body":
-                const body = event.target.value;
-                this.setState(Object.assign(this.state.formData,{ body:body }));
-                break;
+          case "body":
+            const body = event.target.value;
+            this.setState(Object.assign(this.state.formData, { body: body }));
+            break;
+
+          default:
+            break;
         }
     }
 
-    handleSubmit = () => {
+    handleSubmit = async () => {
         // your submit logic
         console.log(this.state.formData);
+        let formData = this.state.formData
+        let response = await PostService.createPost(formData);
+        if (response.status === 201) {
+            this.setState({
+                alert:true,
+                message:'Post Created',
+                severity:'success'
+            })
+        }else{
+            this.setState({
+                alert:true,
+                message:'Post Not Created',
+                severity:'error'
+            })
+        }
+        console.log(this.state);
     }
 
     render() {
@@ -132,7 +158,16 @@ class Trail extends Component{
                         </Table>
                     </TableContainer>
                 </div>
-
+                <CustomSnackBars
+                    open={this.state.alert}
+                    onClose={() => {
+                        this.setState({alert: false})
+                    }}
+                    message={this.state.message}
+                    autoHideDuration={3000}
+                    severity={this.state.severity}
+                    varient="filled"
+                />
             </div>
         )
     }
