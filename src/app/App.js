@@ -6,7 +6,7 @@ import Dashboard from "../pages/Dashboard";
 import Customer from "../pages/Customer";
 import Item from "../pages/Item";
 import Post from "../pages/post";
-import Trail from "../Trail";
+import Trail from "../pages/Trail";
 
 function App() {
     return (

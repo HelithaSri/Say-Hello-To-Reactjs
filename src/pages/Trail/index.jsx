@@ -4,10 +4,10 @@ import Button from "@mui/material/Button";
 import {styleSheet} from "./style";
 import {withStyles} from "@mui/styles";
 //import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
-import CustomSnackBars from "../components/common/SnakBar"
-import PostService from "../services/PostService";
+import CustomSnackBars from "../../components/common/SnakBar"
+import PostService from "../../services/PostService";
 //import { DataGrid } from '@mui/x-data-grid';
-import CommonDataTable from "../components/common/Table";
+import CommonDataTable from "../../components/common/Table";
 
 class Trail extends Component{
     constructor(props) {
